@@ -2,22 +2,27 @@ package vol.metier.model;
 
 import java.io.Serializable;
 
-public class VilleAeroportId implements Serializable{
+public class VilleAeroportId implements Serializable {
 
-	private long ville;
-	private long aeroport;
-	public long getVille() {
+	private Long ville;
+	private Long aeroport;
+
+	public Long getVille() {
 		return ville;
 	}
-	public void setVille(long ville) {
+
+	public void setVille(Long ville) {
 		this.ville = ville;
 	}
+
 	public long getAeroport() {
 		return aeroport;
 	}
-	public void setAeroport(long aeroport) {
+
+	public void setAeroport(Long aeroport) {
 		this.aeroport = aeroport;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -26,6 +31,7 @@ public class VilleAeroportId implements Serializable{
 		result = prime * result + (int) (ville ^ (ville >>> 32));
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -41,9 +47,5 @@ public class VilleAeroportId implements Serializable{
 			return false;
 		return true;
 	}
-	
-	
 
-	
-	
 }

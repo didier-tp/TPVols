@@ -17,10 +17,10 @@ import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
 @Entity
-@Table(name="Vols")
+@Table(name = "Vols")
 public class Vol {
 
-	private long id;
+	private Long id;
 	private Date dateDepart;
 	private Date dateArrivee;
 	private Date heureDepart;
@@ -31,20 +31,21 @@ public class Vol {
 	private Aeroport arrivee;
 	private List<CompagnieAerienneVol> compagniesAerienneVol;
 	private int version;
-	
+
 	public Vol() {
 	}
 
-	@Id  @GeneratedValue 
-	public long getId() {
+	@Id
+	@GeneratedValue
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	@Column(name="DateDepart")
+	@Column(name = "DateDepart")
 	@Temporal(TemporalType.DATE)
 	public Date getDateDepart() {
 		return dateDepart;
@@ -54,7 +55,7 @@ public class Vol {
 		this.dateDepart = dateDepart;
 	}
 
-	@Column(name="DateArrivee")
+	@Column(name = "DateArrivee")
 	@Temporal(TemporalType.DATE)
 	public Date getDateArrivee() {
 		return dateArrivee;
@@ -64,7 +65,7 @@ public class Vol {
 		this.dateArrivee = dateArrivee;
 	}
 
-	@Column(name="HeureDepart")
+	@Column(name = "HeureDepart")
 	@Temporal(TemporalType.TIME)
 	public Date getHeureDepart() {
 		return heureDepart;
@@ -74,7 +75,7 @@ public class Vol {
 		this.heureDepart = heureDepart;
 	}
 
-	@Column(name="HeureArrivee")
+	@Column(name = "HeureArrivee")
 	@Temporal(TemporalType.TIME)
 	public Date getHeureArrivee() {
 		return heureArrivee;
@@ -84,7 +85,7 @@ public class Vol {
 		this.heureArrivee = heureArrivee;
 	}
 
-	@OneToMany(mappedBy="vol",fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "vol", fetch = FetchType.LAZY)
 	public List<Escale> getEscales() {
 		return escales;
 	}
@@ -92,14 +93,13 @@ public class Vol {
 	public void setEscales(List<Escale> escales) {
 		this.escales = escales;
 	}
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "AeroportDep_Id")
 	public Aeroport getDepart() {
 		return depart;
 	}
 
-	
 	public void setDepart(Aeroport depart) {
 		this.depart = depart;
 	}
@@ -115,7 +115,7 @@ public class Vol {
 	}
 
 	@Version
-	@Column(name="Version")
+	@Column(name = "Version")
 	public int getVersion() {
 		return version;
 	}
@@ -124,7 +124,7 @@ public class Vol {
 		this.version = version;
 	}
 
-	@OneToMany(mappedBy = "vol",fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "vol", fetch = FetchType.LAZY)
 	public List<Reservation> getReservations() {
 		return reservations;
 	}
@@ -132,14 +132,13 @@ public class Vol {
 	public void setReservations(List<Reservation> reservations) {
 		this.reservations = reservations;
 	}
-	
-	@OneToMany(mappedBy="id.vol",fetch = FetchType.LAZY)
+
+	@OneToMany(mappedBy = "id.vol", fetch = FetchType.LAZY)
 	public List<CompagnieAerienneVol> getCompagniesAerienneVol() {
 		return compagniesAerienneVol;
 	}
 
-	public void setCompagniesAerienneVol(
-			List<CompagnieAerienneVol> compagniesAerienneVol) {
+	public void setCompagniesAerienneVol(List<CompagnieAerienneVol> compagniesAerienneVol) {
 		this.compagniesAerienneVol = compagniesAerienneVol;
 	}
 
@@ -148,23 +147,15 @@ public class Vol {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((arrivee == null) ? 0 : arrivee.hashCode());
-		result = prime
-				* result
-				+ ((compagniesAerienneVol == null) ? 0 : compagniesAerienneVol
-						.hashCode());
-		result = prime * result
-				+ ((dateArrivee == null) ? 0 : dateArrivee.hashCode());
-		result = prime * result
-				+ ((dateDepart == null) ? 0 : dateDepart.hashCode());
+		result = prime * result + ((compagniesAerienneVol == null) ? 0 : compagniesAerienneVol.hashCode());
+		result = prime * result + ((dateArrivee == null) ? 0 : dateArrivee.hashCode());
+		result = prime * result + ((dateDepart == null) ? 0 : dateDepart.hashCode());
 		result = prime * result + ((depart == null) ? 0 : depart.hashCode());
 		result = prime * result + ((escales == null) ? 0 : escales.hashCode());
-		result = prime * result
-				+ ((heureArrivee == null) ? 0 : heureArrivee.hashCode());
-		result = prime * result
-				+ ((heureDepart == null) ? 0 : heureDepart.hashCode());
+		result = prime * result + ((heureArrivee == null) ? 0 : heureArrivee.hashCode());
+		result = prime * result + ((heureDepart == null) ? 0 : heureDepart.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
-		result = prime * result
-				+ ((reservations == null) ? 0 : reservations.hashCode());
+		result = prime * result + ((reservations == null) ? 0 : reservations.hashCode());
 		result = prime * result + version;
 		return result;
 	}
@@ -229,7 +220,5 @@ public class Vol {
 			return false;
 		return true;
 	}
-	
-	
 
 }

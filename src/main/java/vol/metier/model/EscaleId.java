@@ -2,29 +2,28 @@ package vol.metier.model;
 
 import java.io.Serializable;
 
-
 @SuppressWarnings("serial")
-public class EscaleId implements Serializable{
+public class EscaleId implements Serializable {
 
-	private long aeroport;
-	private long vol;
-	
+	private Long aeroport;
+	private Long vol;
+
 	public EscaleId() {
 	}
 
-	public long getAeroport() {
+	public Long getAeroport() {
 		return aeroport;
 	}
 
-	public void setAeroport(long aeroport) {
+	public void setAeroport(Long aeroport) {
 		this.aeroport = aeroport;
 	}
 
-	public long getVol() {
+	public Long getVol() {
 		return vol;
 	}
 
-	public void setVol(long vol) {
+	public void setVol(Long vol) {
 		this.vol = vol;
 	}
 
@@ -52,10 +51,5 @@ public class EscaleId implements Serializable{
 			return false;
 		return true;
 	}
-	
-
-	
-	
-	
 
 }

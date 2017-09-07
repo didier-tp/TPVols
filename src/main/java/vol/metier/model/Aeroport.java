@@ -12,28 +12,29 @@ import javax.persistence.Table;
 import javax.persistence.Version;
 
 @Entity
-@Table(name="Aeroports")
+@Table(name = "Aeroports")
 public class Aeroport {
 
-	private long id;
+	private Long id;
 	private String nom;
 	private List<VilleAeroport> villeAeroport;
 	private List<Escale> escales;
 	private int version;
-	
+
 	public Aeroport() {
 	}
 
-	@Id @GeneratedValue
-	public long getId() {
+	@Id
+	@GeneratedValue
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	@Column(name="Nom",length=50)
+	@Column(name = "Nom", length = 50)
 	public String getNom() {
 		return nom;
 	}
@@ -42,8 +43,7 @@ public class Aeroport {
 		this.nom = nom;
 	}
 
-	
-	@OneToMany(mappedBy="aeroport", fetch=FetchType.LAZY)
+	@OneToMany(mappedBy = "aeroport", fetch = FetchType.LAZY)
 	public List<VilleAeroport> getVilleAeroport() {
 		return villeAeroport;
 	}
@@ -52,7 +52,7 @@ public class Aeroport {
 		this.villeAeroport = villeAeroport;
 	}
 
-	@OneToMany(mappedBy="aeroport",fetch=FetchType.LAZY)
+	@OneToMany(mappedBy = "aeroport", fetch = FetchType.LAZY)
 	public List<Escale> getEscales() {
 		return escales;
 	}
@@ -61,10 +61,8 @@ public class Aeroport {
 		this.escales = escales;
 	}
 
-	
-
 	@Version
-	@Column(name="Version")
+	@Column(name = "Version")
 	public int getVersion() {
 		return version;
 	}
@@ -81,8 +79,7 @@ public class Aeroport {
 		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
 		result = prime * result + version;
-		result = prime * result
-				+ ((villeAeroport == null) ? 0 : villeAeroport.hashCode());
+		result = prime * result + ((villeAeroport == null) ? 0 : villeAeroport.hashCode());
 		return result;
 	}
 
@@ -116,9 +113,5 @@ public class Aeroport {
 			return false;
 		return true;
 	}
-
-	
-	
-	
 
 }

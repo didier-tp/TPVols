@@ -4,7 +4,6 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -15,31 +14,32 @@ import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
 @Entity
-@Table (name="Reservations")
+@Table(name = "Reservations")
 public class Reservation {
 
-	private long id;
+	private Long id;
 	private Date date;
 	private int numero;
 	private Passager passager;
 	private Vol vol;
 	private int version;
-	
+
 	private Client client;
-	
+
 	public Reservation() {
 	}
 
-	@Id  @GeneratedValue
-	public long getId() {
+	@Id
+	@GeneratedValue
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	@Column(name="XDate")
+	@Column(name = "XDate")
 	@Temporal(TemporalType.TIMESTAMP)
 	public Date getDate() {
 		return date;
@@ -49,7 +49,7 @@ public class Reservation {
 		this.date = date;
 	}
 
-	@Column(name="Numero")
+	@Column(name = "Numero")
 	public int getNumero() {
 		return numero;
 	}
@@ -59,7 +59,7 @@ public class Reservation {
 	}
 
 	@ManyToOne
-	@JoinColumn(name="Passager_Id")
+	@JoinColumn(name = "Passager_Id")
 	public Passager getPassager() {
 		return passager;
 	}
@@ -67,9 +67,9 @@ public class Reservation {
 	public void setPassager(Passager passager) {
 		this.passager = passager;
 	}
-	
+
 	@ManyToOne
-	@JoinColumn(name="Vol_Id")
+	@JoinColumn(name = "Vol_Id")
 	public Vol getVol() {
 		return vol;
 	}
@@ -79,7 +79,7 @@ public class Reservation {
 	}
 
 	@Version
-	@Column(name="Version")
+	@Column(name = "Version")
 	public int getVersion() {
 		return version;
 	}
@@ -106,8 +106,7 @@ public class Reservation {
 		result = prime * result + ((date == null) ? 0 : date.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + numero;
-		result = prime * result
-				+ ((passager == null) ? 0 : passager.hashCode());
+		result = prime * result + ((passager == null) ? 0 : passager.hashCode());
 		result = prime * result + version;
 		result = prime * result + ((vol == null) ? 0 : vol.hashCode());
 		return result;
@@ -150,8 +149,5 @@ public class Reservation {
 			return false;
 		return true;
 	}
-	
-	
-	
 
 }

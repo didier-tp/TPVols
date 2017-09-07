@@ -15,30 +15,30 @@ import javax.persistence.Table;
 import javax.persistence.Version;
 
 @Entity
-@Table(name="Passager")
+@Table(name = "Passager")
 public class Passager {
 
-	private long id;
+	private Long id;
 	private String nom;
 	private String prenom;
 	private Adresse adresse;
 	private List<Reservation> reservations;
 	private int version;
-	
-	
+
 	public Passager() {
 	}
 
-	@Id @GeneratedValue
-	public long getId() {
+	@Id
+	@GeneratedValue
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	@Column(name="Nom", length=50)
+	@Column(name = "Nom", length = 50)
 	public String getNom() {
 		return nom;
 	}
@@ -47,7 +47,7 @@ public class Passager {
 		this.nom = nom;
 	}
 
-	@Column(name="Prenom", length=50)
+	@Column(name = "Prenom", length = 50)
 	public String getPrenom() {
 		return prenom;
 	}
@@ -57,12 +57,10 @@ public class Passager {
 	}
 
 	@Embedded
-	@AttributeOverrides({
-		@AttributeOverride(name="adresse",column=@Column(name="P_RUE")),
-		@AttributeOverride(name="codePostal",column=@Column(name="P_CP")),
-		@AttributeOverride(name="ville",column=@Column(name="P_VILLE")),
-		@AttributeOverride(name="pays",column=@Column(name="P_PAYS"))
-		})
+	@AttributeOverrides({ @AttributeOverride(name = "adresse", column = @Column(name = "P_RUE")),
+			@AttributeOverride(name = "codePostal", column = @Column(name = "P_CP")),
+			@AttributeOverride(name = "ville", column = @Column(name = "P_VILLE")),
+			@AttributeOverride(name = "pays", column = @Column(name = "P_PAYS")) })
 	public Adresse getAdresse() {
 		return adresse;
 	}
@@ -70,8 +68,8 @@ public class Passager {
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
-	
-	@OneToMany(mappedBy ="passager", fetch = FetchType.LAZY)
+
+	@OneToMany(mappedBy = "passager", fetch = FetchType.LAZY)
 	public List<Reservation> getReservations() {
 		return reservations;
 	}
@@ -81,7 +79,7 @@ public class Passager {
 	}
 
 	@Version
-	@Column(name="Version")
+	@Column(name = "Version")
 	public int getVersion() {
 		return version;
 	}
@@ -98,8 +96,7 @@ public class Passager {
 		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
 		result = prime * result + ((prenom == null) ? 0 : prenom.hashCode());
-		result = prime * result
-				+ ((reservations == null) ? 0 : reservations.hashCode());
+		result = prime * result + ((reservations == null) ? 0 : reservations.hashCode());
 		result = prime * result + version;
 		return result;
 	}
@@ -139,7 +136,5 @@ public class Passager {
 			return false;
 		return true;
 	}
-	
-	
 
 }

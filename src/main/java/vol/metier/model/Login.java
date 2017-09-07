@@ -10,29 +10,30 @@ import javax.persistence.Table;
 import javax.persistence.Version;
 
 @Entity
-@Table (name="Login")
+@Table(name = "Login")
 public class Login {
 
-	private long id;
+	private Long id;
 	private String login;
 	private String motDePasse;
 	private boolean admin;
 	private int version;
 	private Client client;
-	
+
 	public Login() {
 	}
 
-	@Id  @GeneratedValue
-	public long getId() {
+	@Id
+	@GeneratedValue
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	@Column(name="Login", length=50, unique=true)
+	@Column(name = "Login", length = 50, unique = true)
 	public String getLogin() {
 		return login;
 	}
@@ -41,7 +42,7 @@ public class Login {
 		this.login = login;
 	}
 
-	@Column(name="MotDePasse",length=50)
+	@Column(name = "MotDePasse", length = 50)
 	public String getMotDePasse() {
 		return motDePasse;
 	}
@@ -50,7 +51,7 @@ public class Login {
 		this.motDePasse = motDePasse;
 	}
 
-	@Column(name="Admin")
+	@Column(name = "Admin")
 	public boolean isAdmin() {
 		return admin;
 	}
@@ -58,8 +59,8 @@ public class Login {
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
 	}
-	
-	@OneToOne(mappedBy ="login", fetch= FetchType.LAZY)//eager
+
+	@OneToOne(mappedBy = "login", fetch = FetchType.LAZY) // eager
 	public Client getClient() {
 		return client;
 	}
@@ -69,7 +70,7 @@ public class Login {
 	}
 
 	@Version
-	@Column(name="Version")
+	@Column(name = "Version")
 	public int getVersion() {
 		return version;
 	}
@@ -86,8 +87,7 @@ public class Login {
 		result = prime * result + ((client == null) ? 0 : client.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((login == null) ? 0 : login.hashCode());
-		result = prime * result
-				+ ((motDePasse == null) ? 0 : motDePasse.hashCode());
+		result = prime * result + ((motDePasse == null) ? 0 : motDePasse.hashCode());
 		result = prime * result + version;
 		return result;
 	}
@@ -125,6 +125,4 @@ public class Login {
 		return true;
 	}
 
-	
-	
 }
