@@ -58,7 +58,7 @@ public class Reservation {
 		this.numero = numero;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name="Passager_Id")
 	public Passager getPassager() {
 		return passager;
@@ -68,7 +68,7 @@ public class Reservation {
 		this.passager = passager;
 	}
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name="Vol_Id")
 	public Vol getVol() {
 		return vol;
@@ -88,7 +88,7 @@ public class Reservation {
 		this.version = version;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "Client_Id")
 	public Client getClient() {
 		return client;
