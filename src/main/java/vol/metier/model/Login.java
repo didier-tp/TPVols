@@ -1,5 +1,6 @@
 package vol.metier.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -60,7 +61,7 @@ public class Login {
 		this.admin = admin;
 	}
 
-	@OneToOne(mappedBy = "login", fetch = FetchType.LAZY) // eager
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "login", fetch = FetchType.EAGER) // eager
 	public Client getClient() {
 		return client;
 	}

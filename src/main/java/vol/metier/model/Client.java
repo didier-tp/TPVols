@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -88,7 +89,7 @@ public abstract class Client {
 		this.email = email;
 	}
 
-	@OneToOne(fetch = FetchType.EAGER)
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "Login_Id")
 	public Login getLogin() {
 		return login;
